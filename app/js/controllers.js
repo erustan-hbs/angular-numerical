@@ -3,9 +3,10 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', function($scope) {
+.controller('ControllerNumericalApp', ['$scope', function($scope) {
 
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
+    //local scope variables.
+    $scope.numerical1 = 1234567890.0123456;
+    $scope.filter1 = 9876543210.654321;
 
-  }]);
+}]);

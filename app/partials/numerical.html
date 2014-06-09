@@ -1,0 +1,197 @@
+<table>
+ <tr>
+  <td>
+      <h4>Directive</h4>
+      <input type="text" ng-model="numerical1">
+      <br/><br/>
+      <table style="width: 300px;">
+          <tr>
+              <td>My Numerical</td>
+              <td>&nbsp;&nbsp;&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Precision 2</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="2"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Precision 3</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="3"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Prefix Money</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" prefix="$"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Parens</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" parens></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Parens Money</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" parens prefix="$"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Color Red</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" color="#ff0000"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Color Blue</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" color="#0000ff"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Abbreviate</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" abbreviate></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Abbreviate 2</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" abbreviate precision="2"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Overloaded</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" prefix="&" parens color="#00ff00" abbreviate precision="4"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Alignment Center</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="1" alignment="center"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Alignment Right</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="1" alignment="right"></numerical>
+              </td>
+          </tr>
+      </table>
+
+  </td>
+  <td><div style="width:100px;"></div>
+  </td>
+  <td>
+      <h4>Filter</h4>
+      <input type="text" ng-model="filter1">
+      <br/><br/>
+      <table>
+          <tr>
+              <td>My Numerical Filter</td>
+              <td>&nbsp;&nbsp;&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical }}
+              </td>
+          </tr>
+          <tr>
+              <td>Precision 2</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:2 }}
+              </td>
+          </tr>
+          <tr>
+              <td>Precision 3</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:3 }}
+              </td>
+          </tr>
+          <tr>
+              <td>Prefix Money</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{prefix:'$', precision:2} }}
+              </td>
+          </tr>
+          <tr>
+              <td>Parens</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{precision:4, parens:true} }}
+              </td>
+          </tr>
+          <tr>
+              <td>Parens Money</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{parens:true, prefix:'$', precision:2} }}
+              </td>
+          </tr>
+          <tr>
+              <td>Color Red</td>
+              <td>&nbsp;</td>
+              <td>
+                  TBD: filters don't support markup. <i>* try ng-bind-html?</i>
+              </td>
+          </tr>
+          <tr>
+              <td>Color Blue</td>
+              <td>&nbsp;</td>
+              <td>
+                  TBD: filters don't support markup. <i>* try ng-bind-html?</i>
+              </td>
+          </tr>
+          <tr>
+              <td>Abbreviate</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{abbreviate: true} }}
+              </td>
+          </tr>
+          <tr>
+              <td>Abbreviate 2</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{abbreviate: true, precision:2} }}
+              </td>
+          </tr>
+          <tr>
+              <td>Overloaded</td>
+              <td>&nbsp;</td>
+              <td>
+                  {{ filter1 | numerical:{prefix:'&', parens:true, abbreviate:true, precision:4} }}
+              </td>
+          </tr>
+      </table>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+
+
+
