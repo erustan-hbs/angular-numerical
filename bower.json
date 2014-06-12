@@ -1,10 +1,10 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "angular-numerical",
+  "description": "An Angular number formatter using custom directives and filters.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/rustane/angular-numerical",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "angular": "1.2.x",
     "angular-route": "1.2.x",
