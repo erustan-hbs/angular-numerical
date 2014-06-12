@@ -48,17 +48,17 @@
               </td>
           </tr>
           <tr>
-              <td>Color Red</td>
-              <td>&nbsp;</td>
-              <td>
-                  <numerical ng-model="numerical1" color="#ff0000"></numerical>
-              </td>
-          </tr>
-          <tr>
               <td>Color Blue</td>
               <td>&nbsp;</td>
               <td>
                   <numerical ng-model="numerical1" color="#0000ff"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Color Negative</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" color="#eeeeee" color-negative="#ff0000"></numerical>
               </td>
           </tr>
           <tr>
@@ -94,6 +94,41 @@
               <td>&nbsp;</td>
               <td>
                   <numerical ng-model="numerical1" precision="1" alignment="right"></numerical>
+              </td>
+          </tr>
+
+
+          <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+          <tr>
+              <td>Paren Alignment</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="2" alignment="right"></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Paren Alignment</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="2" alignment="right" parens></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Paren Alignment</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="2" alignment="right" prefix="$" parens></numerical>
+              </td>
+          </tr>
+          <tr>
+              <td>Paren Alignment</td>
+              <td>&nbsp;</td>
+              <td>
+                  <numerical ng-model="numerical1" precision="2" alignment="right" prefix="$"></numerical>
               </td>
           </tr>
       </table>
@@ -146,20 +181,6 @@
               <td>&nbsp;</td>
               <td>
                   {{ filter1 | numerical:{parens:true, prefix:'$', precision:2} }}
-              </td>
-          </tr>
-          <tr>
-              <td>Color Red</td>
-              <td>&nbsp;</td>
-              <td>
-                  TBD: filters don't support markup. <i>* try ng-bind-html?</i>
-              </td>
-          </tr>
-          <tr>
-              <td>Color Blue</td>
-              <td>&nbsp;</td>
-              <td>
-                  TBD: filters don't support markup. <i>* try ng-bind-html?</i>
               </td>
           </tr>
           <tr>

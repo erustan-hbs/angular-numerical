@@ -11,32 +11,30 @@ angular.module('myApp.filters', []).
   filter('numerical', function() {
     return function(input, config) {
 
-        //precision can be in the config object or default parameter
-        //value for the numerical filter.
-        var precision = -1;
-        if (!isNaN(config)) {
-            precision = config;
-        } else if (typeof(config) !== 'undefined' &&
-                   typeof(config.precision) !== 'undefined') {
-            precision = config.precision;
-        }
+        //set default values to be used if no config object is passed.
+        var number = parseFloat(input),
+            precision = -1,
+            parens = false,
+            abbreviate = false,
+            prefix = '',
+            suffix = '';
+
 
         //clean the configuration parameters.
-        var number = parseFloat(input),
-            suffix = '',
-            parens = (typeof(config) === 'undefined' ||
-                      typeof(config.parens) === 'undefined')
-                            ? false : true,
-            abbreviate = (typeof(config) === 'undefined' ||
-                          typeof(config.abbreviate) === 'undefined')
-                            ? false : true,
-            prefix = (typeof(config) === 'undefined' ||
-                      typeof(config.prefix) === 'undefined')
-                            ? '' : config.prefix;
+        if (typeof(config) !== 'undefined') {
+            //precision can be in the config object or default parameter
+            //value for the numerical filter.
+            if (!isNaN(config)) {
+                precision = config;
+            } else if (typeof(config.precision) !== 'undefined') {
+                precision = config.precision;
+            }
+            //just check for existence of these config values.
+            if (typeof(config.parens) !== 'undefined') { parens = true; }
+            if (typeof(config.abbreviate) !== 'undefined') { abbreviate = true; }
+            if (typeof(config.prefix) !== 'undefined') { prefix = config.prefix; }
 
-            //color = (typeof(config) === 'undefined' ||
-            //            typeof(config.color) === 'undefined')
-            //                ? '' : config.color;
+        }
 
         //should we abbreviate this value.
         if (abbreviate) {
@@ -51,13 +49,15 @@ angular.module('myApp.filters', []).
         }
 
         //set the precision.
-        if (precision !== -1) {
+        if (precision > -1) {
             number = number.toFixed(precision);
         }
 
         //convert to text to string for decorating.
-        var dollars = number.toString().substring(0, number.toString().indexOf('.'));
-        var cents = number.toString().substring(number.toString().indexOf('.'));
+        var dollars = number.toString().substring(0, number.toString().indexOf('.')),
+            cents = number.toString().substring(number.toString().indexOf('.'));
+
+        //add commas to the dollars but leave the cents alone.
         dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         var returnNumber = dollars + cents;
 
@@ -71,12 +71,6 @@ angular.module('myApp.filters', []).
 
         //add a currency prefix.
         if (prefix.length > 0) { returnNumber = prefix + returnNumber; }
-
-        //add coloring.
-        //if (color.length > 0) {
-        //    returnNumber = "<span style='color: ||a||;'>" + returnNumber + "</span>";
-        //    returnNumber = returnNumber.replace('||a||', color);
-        //}
 
         //return the decorated numerical value.
         return returnNumber;

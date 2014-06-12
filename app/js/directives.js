@@ -39,8 +39,22 @@ angular.module('myApp.directives', []).
 
             //apply decorations.
             returnNumber = returnNumber + suffix;
-            if (scope.parens && number < 0 ) { returnNumber = '(' + returnNumber + ')' };
-            returnNumber = scope.prefix + returnNumber;
+
+            //set the paren state.
+            if (scope.parens && number < 0 ) {
+                scope.displayParenRight = 'visible';
+                scope.displayParenLeft = 'inline';
+            } else {
+                scope.displayParenRight = 'hidden';
+                scope.displayParenLeft = 'none';
+            }
+
+            //check for a negative color request.
+            if (scope.colorNegative !== '#000000' && number < 0) {
+                scope.displayColor = scope.colorNegative;
+            } else {
+                scope.displayColor = scope.color;
+            }
 
             //update the view.
             scope.displayValue = returnNumber;
@@ -52,7 +66,12 @@ angular.module('myApp.directives', []).
             scope: {
                 ngModel: '='
             },
-            template: '<div style="color:{{color}}; text-align:{{alignment}} ">{{displayValue}}</div>',
+            template: '<div style="color:{{displayColor}}; text-align:{{alignment}} ">' +
+                        '{{prefix}}' +
+                        '<span style="display:{{displayParenLeft}}">(</span>' +
+                            '{{displayValue}}' +
+                        '<span style="visibility:{{displayParenRight}}">)</span>' +
+                      '</div>',
             replace: true,
             link: function link(scope, element, attrs, controller) {
 
@@ -62,7 +81,11 @@ angular.module('myApp.directives', []).
                 scope.abbreviate = (typeof(attrs.abbreviate) === 'undefined') ? false : true;
                 scope.prefix = (typeof(attrs.prefix) === 'undefined') ? '' : attrs.prefix;
                 scope.color = (typeof(attrs.color) === 'undefined') ? '#000000' : attrs.color;
+                scope.colorNegative = (typeof(attrs.colorNegative) === 'undefined') ? '#000000' : attrs.colorNegative;
                 scope.alignment = (typeof(attrs.alignment) === 'undefined') ? 'left' : attrs.alignment;
+                scope.displayParenRight = 'hidden';
+                scope.displayParenLeft = 'none';
+                scope.displayColor = scope.color;
 
                 //update the view.
                 formatNumber(scope);
