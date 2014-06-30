@@ -2,13 +2,8 @@
 
 /* Filters */
 
-angular.module('allston.filters', []).
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    };
-  }]).
-  filter('numerical', function() {
+angular.module('allston.filters', [])
+  .filter('numerical', function() {
     return function(input, config) {
 
         //set default values to be used if no config object is passed.

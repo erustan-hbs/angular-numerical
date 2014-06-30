@@ -2,7 +2,7 @@
 
 /* Directives */
 angular.module('allston.directives', [])
-    .directive('numerical', ['$timeout', function($timeout) {
+    .directive('numerical', function() {
 
         var formatNumber = function (scope) {
 
@@ -93,5 +93,5 @@ angular.module('allston.directives', [])
 
             }
         }
-    }]);
+    });
 
