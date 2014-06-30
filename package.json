@@ -1,7 +1,7 @@
 {
   "name": "angular-numerical",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An Angular number formatter using custom directives and filters.",
   "repository": "https://github.com/rustane/angular-numerical",
   "license": "MIT",
